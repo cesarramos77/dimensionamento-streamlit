@@ -106,8 +106,8 @@ def calculate_dia_mes(volume):
     volume_mes = volume_dia * 22
     #Formatar para visual em portugues
     # Formatando para visualização em português
-    arrival_rate_day = f"{volume_dia:,.0f}"  # Utilizando f-strings para formatação direta
-    arrival_rate_month = f"{volume_mes:,.0f}"  # Utilizando f-strings para formatação direta
+    arrival_rate_day = f"{volume_dia:.0f}"  # Utilizando f-strings para formatação direta
+    arrival_rate_month = f"{volume_mes:.0f}"  # Utilizando f-strings para formatação direta
     return arrival_rate_day, arrival_rate_month
 
 # Criando a interface com Streamlit
@@ -169,13 +169,13 @@ def main():
         df_scenarios = pd.DataFrame(scenarios.items(), columns=['Quantidade de Agentes', '% de Ligações Atendidas'])
         df_scenarios['% de Ligações Atendidas'] = (df_scenarios['% de Ligações Atendidas'] * 100).apply(lambda x: "{:.2f}%".format(x))
         df_scenarios['Cap. Max. Atend.'] = round((df_scenarios['Quantidade de Agentes'] * hc_vailability) * max_capacity)
-        df_scenarios['Cap. Max. Atend.'] = df_scenarios['Cap. Max. Atend.'].apply(lambda x: f"{x:,.0f}")
+        df_scenarios['Cap. Max. Atend.'] = df_scenarios['Cap. Max. Atend.'].apply(lambda x: f"{x:.0f}")
         st.table(df_scenarios)
         
         
          #Formatar total_volume e max_capacity com separadores de milhares
-        f_total_volume_day = f"{total_volume_day:,.0f}"
-        f_total_volume_month = f"{total_volume_month:,.0f}"
+        f_total_volume_day = f"{total_volume_day:.0f}"
+        f_total_volume_month = f"{total_volume_month:.0f}"
         tma_t_delta = dt.timedelta(seconds=service_time)
         tma_hh = str(tma_t_delta)
         
